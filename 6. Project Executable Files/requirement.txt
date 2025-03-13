@@ -1,0 +1,8 @@
+pandas
+numpy
+seaborn
+matplotlib
+scikit-learn
+xgboost
+optuna
+pickle5  # Only required for Python versions < 3.8
