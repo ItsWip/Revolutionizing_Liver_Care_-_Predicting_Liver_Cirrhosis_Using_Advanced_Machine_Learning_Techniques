@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liver Cirrhosis Prediction</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; padding: 20px; }
+        form { max-width: 600px; margin: auto; }
+        label { font-weight: bold; }
+        input, select { width: 100%; padding: 8px; margin: 5px 0; }
+        button { padding: 10px; background: green; color: white; border: none; cursor: pointer; }
+        button:hover { background: darkgreen; }
+    </style>
+</head>
+<body>
+    <h2>Liver Cirrhosis Prediction Form</h2>
+    <form action="/predict" method="POST">
+        <label for="Gender">Gender:</label>
+        <select name="Gender" required>
+            <option value="1">Male</option>
+            <option value="0">Female</option>
+            <option value="2">Transgender</option>
+        </select>
+        
+        <label for="Place">Place (Location where the patient lives):</label>
+        <input type="text" name="Place" required>
+
+        <label for="Type_of_alcohol">Type of Alcohol Consumed:</label>
+        <input type="text" name="Type_of_alcohol">
+
+        <label for="Hepatitis_C">Hepatitis C Infection (1 = Yes, 0 = No):</label>
+        <input type="number" name="Hepatitis_C" required>
+
+        <label for="Obesity">Obesity (1 = Yes, 0 = No):</label>
+        <input type="number" name="Obesity" required>
+
+        <label for="Family_History">Family History of Cirrhosis:</label>
+        <input type="number" name="Family_History" required>
+        
+        <label for="TCH">TCH:</label>
+        <input type="number" name="TCH" step="any" required>
+        
+        <label for="Hemoglobin">Hemoglobin (g/dl):</label>
+        <input type="number" name="Hemoglobin" step="any" required>
+        
+        <label for="PCV">PCV (%):</label>
+        <input type="number" name="PCV" step="any" required>
+        
+        <label for="RBC">RBC (million cells/microliter):</label>
+        <input type="number" name="RBC" step="any" required>
+
+        <label for="MCV">MCV (femtoliters/cell):</label>
+        <input type="number" name="MCV" step="any" required>
+        
+        <label for="MCH">MCH (picograms/cell):</label>
+        <input type="number" name="MCH" step="any" required>
+
+        <label for="MCHC">MCHC (grams/deciliter):</label>
+        <input type="number" name="MCHC" step="any" required>
+        
+        <label for="Total_Count">Total Count:</label>
+        <input type="number" name="Total_Count" required>
+
+        <label for="Polymorphs">Polymorphs (%):</label>
+        <input type="number" name="Polymorphs" step="any" required>
+
+        <label for="Lymphocytes">Lymphocytes (%):</label>
+        <input type="number" name="Lymphocytes" step="any" required>
+
+        <label for="Monocytes">Monocytes (%):</label>
+        <input type="number" name="Monocytes" step="any" required>
+
+        <label for="Eosinophils">Eosinophils (%):</label>
+        <input type="number" name="Eosinophils" step="any" required>
+
+        <label for="Basophils">Basophils (%):</label>
+        <input type="number" name="Basophils" step="any" required>
+                
+        <label for="Platelet_Count">Platelet Count (lakhs/mm):</label>
+        <input type="number" name="Platelet_Count" step="any" required>
+
+        <label for="Indirect">Indirect Bilirubin (mg/dl):</label>
+        <input type="number" name="Indirect" step="any" required>
+        
+        <label for="Total_Protein">Total Protein (g/dl):</label>
+        <input type="number" name="Total_Protein" step="any" required>
+        
+        <label for="Albumin">Albumin (g/dl):</label>
+        <input type="number" name="Albumin" step="any" required>
+        
+        <label for="Globulin">Globulin (g/dl):</label>
+        <input type="number" name="Globulin" step="any" required>
+
+        <label for="A_G_Ratio">A/G Ratio:</label>
+        <input type="number" name="A_G_Ratio" step="any" required>
+
+        <label for="USG_Abdomen">USG Abdomen (Diffuse liver or not):</label>
+        <input type="text" name="USG_Abdomen">
+        
+        <label for="AST_ALT_Ratio">AST/ALT Ratio:</label>
+        <input type="number" name="AST_ALT_Ratio" step="any" required>
+        
+        <label for="Direct_Total_Bilirubin_Ratio">Direct/Total Bilirubin Ratio:</label>
+        <input type="number" name="Direct_Total_Bilirubin_Ratio" step="any" required>
+        
+        <label for="TG_HDL_Ratio">TG/HDL Ratio:</label>
+        <input type="number" name="TG_HDL_Ratio" step="any" required>
+        
+        <label for="LDL_HDL_Ratio">LDL/HDL Ratio:</label>
+        <input type="number" name="LDL_HDL_Ratio" step="any" required>
+
+        <label for="RDW">RDW</label>
+        <input type="number" name="RDW" step="any" required>
+        
+        <label for="Lifetime_Alcohol_Consumption">Lifetime Alcohol Consumption:</label>
+        <input type="number" name="Lifetime_Alcohol_Consumption" step="any">
+        
+        <label for="Alcohol_Consumption_Intensity">Alcohol Consumption Intensity:</label>
+        <input type="number" name="Alcohol_Consumption_Intensity" step="any">
+        
+        <label for="Liver_Stress_Score">Liver Stress Score:</label>
+        <input type="number" name="Liver_Stress_Score" step="any" required>
+        
+        <label for="Metabolic_Syndrome_Indicator">Metabolic Syndrome Indicator:</label>
+        <input type="number" name="Metabolic_Syndrome_Indicator" required>
+        
+        <label for="FamilyHistory_Diabetes">Family History of Diabetes:</label>
+        <input type="number" name="FamilyHistory_Diabetes" required>
+
+        <label for="Obesity_LDL">Obesity LDL:</label>
+        <input type="number" name="Obesity_LDL" required>
+
+        <label for="Obesity_TG">Obesity TG:</label>
+        <input type="number" name="Obesity_TG" required>
+
+        <label for="Age_Category_Middle_Aged">Age Category (Middle-Aged):</label>
+        <input type="number" name="Age_Category_Middle_Aged" required>
+
+        <label for="Age_Category_Young">Age Category (Young):</label>
+        <input type="number" name="Age_Category_Young" required>
+
+        <label for="Alcohol_Category_Light">Alcohol Category (Light):</label>
+        <input type="number" name="Alcohol_Category_Light" required>
+
+        <label for="Alcohol_Category_Moderate">Alcohol Category (Moderate):</label>
+        <input type="number" name="Alcohol_Category_Moderate" required>
+
+        <label for="Alcohol_Category_Heavy">Alcohol Category (Heavy):</label>
+        <input type="number" name="Alcohol_Category_Heavy" required>
+
+        <label for="BP_Category_Prehypertension">BP Category (Prehypertension):</label>
+        <input type="number" name="BP_Category_Prehypertension" required>
+
+        <label for="BP_Category_Hypertension">BP Category (Hypertension):</label>
+        <input type="number" name="BP_Category_Hypertension" required>
+        
+        <button type="submit">Predict</button>
+    </form>
+    
+    {% if prediction_text %}
+        <h3>Prediction: {{ prediction_text }}</h3>
+    {% endif %}
+</body>
+</html>
