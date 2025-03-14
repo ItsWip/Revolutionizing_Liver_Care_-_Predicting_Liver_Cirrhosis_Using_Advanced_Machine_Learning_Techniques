@@ -4,24 +4,20 @@ import numpy as np
 import pandas as pd
 import os
 
-import os
-
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
-print(f"BASE_DIR: {BASE_DIR}")  # Debugging output
+print(f"BASE_DIR: {BASE_DIR}")
 
 TEMPLATE_PATH = os.path.join(BASE_DIR, "templates")
 MODEL_PATH = os.path.join(BASE_DIR, "model.pkl")
 
-print(f"MODEL_PATH: {MODEL_PATH}")  # Debugging output
+print(f"MODEL_PATH: {MODEL_PATH}")
 
-# Check if the file exists before opening
 if not os.path.exists(MODEL_PATH):
     raise FileNotFoundError(f"Model file not found at {MODEL_PATH}")
 
 with open(MODEL_PATH, "rb") as file:
     model = pickle.load(file)
 
-# Initialize Flask app
 app = Flask(__name__, template_folder=TEMPLATE_PATH)
 
 @app.route("/")
@@ -31,7 +27,6 @@ def home():
 @app.route("/predict", methods=["POST"])
 def predict():
     try:
-        # Extracting form data
         features = [
             request.form.get("Gender"), request.form.get("Place"),
             request.form.get("Type_of_alcohol"), request.form.get("Hepatitis_C"),
@@ -58,12 +53,10 @@ def predict():
             request.form.get("BP_Category_Prehypertension"), request.form.get("BP_Category_Hypertension")
         ]
 
-        # Convert input data to NumPy array and reshape
         features = np.array(features, dtype=float).reshape(1, -1)
         
-        # Make prediction
         prediction = model.predict(features)[0]
-        result = "Patient is at risk of Liver Cirrhosis" if prediction == 1 else "No Cirrhosis detected"
+        result = "Patient is at risk of Liver Cirrhosis" if prediction == 0 else "No Cirrhosis detected"
 
         return render_template("index.html", prediction_text=result)
     
